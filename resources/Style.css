@@ -85,5 +85,28 @@ a, a:visited,a:active{
     list-style: none;
 }
 
+/* *************************Sub-page*************************/
 
+/* .SubNavBar{
+    
+    background-color: #EEEAD9;
+    position: absolute;
+    text-align: left;
+    height: 100vh;
+}
+.SubNavBar ul{
+    padding: 15px;
+    color: #2B201B;
+    list-style: none;
+    text-align: center;
+}
+.SubNavBar .Settings{
+    position: absolute;
+    bottom: 0;
+}
+.Background-color{
+    background-color: #FFFAE6;
+} */
+
+/* *************************Dogs-page-style*************************/
 
