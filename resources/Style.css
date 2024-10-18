@@ -31,13 +31,13 @@ body{
     margin: 15px;
     padding-right: 15px;
 }
-a:hover{
+.main-navbar a:hover{
     border-bottom: 3px solid #ffa570;
     color: #FFFAE6;
     padding-bottom: 5px;
     transition: 0.1s;
 } 
-a, a:visited,a:active{
+.main-navbar a,.main-navbar a:visited,a:active{
     text-decoration: none;
     color: #FFFAE6;
 }
@@ -87,11 +87,9 @@ a, a:visited,a:active{
 
 /* *************************Sub-page*************************/
 
-/* .SubNavBar{
-    
+.SubNavBar{
     background-color: #EEEAD9;
     position: absolute;
-    text-align: left;
     height: 100vh;
 }
 .SubNavBar ul{
@@ -106,7 +104,7 @@ a, a:visited,a:active{
 }
 .Background-color{
     background-color: #FFFAE6;
-} */
+}
 
 /* *************************Dogs-page-style*************************/
 
