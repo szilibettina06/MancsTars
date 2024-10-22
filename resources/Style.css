@@ -1,6 +1,7 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: #FFFAE6;
 }
 /* *************************Main-page-style*************************/
 .MainPageBackground{
@@ -31,13 +32,13 @@ body{
     margin: 15px;
     padding-right: 15px;
 }
-a:hover{
+.main-navbar a:hover{
     border-bottom: 3px solid #ffa570;
     color: #FFFAE6;
     padding-bottom: 5px;
     transition: 0.1s;
 } 
-a, a:visited,a:active{
+.main-navbar a,.main-navbar a:visited,a:active{
     text-decoration: none;
     color: #FFFAE6;
 }
@@ -85,5 +86,18 @@ a, a:visited,a:active{
     list-style: none;
 }
 
+/* *************************Sub-page*************************/
 
+.SubNavBar{
+    background-color: #EEEAD9;
+    position: absolute;
+    height: 100vh;
+}
+
+.SubNavBar .Settings{
+    position: absolute;
+
+    bottom: 0;
+}
+/* *************************Dogs-page-style*************************/
 
