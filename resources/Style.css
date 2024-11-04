@@ -11,6 +11,7 @@ body{
     height: 100vh;
     width: 100vh;
 }
+/* ----------------------NavBar----------------------*/
 .main-navbar{
     display: flex;
     flex-direction: row;
@@ -20,6 +21,7 @@ body{
     height: 70px;
     width: 70px;
 }
+
 .main-navbar .navbar-list{
     position: absolute;
     right: 0;
@@ -42,7 +44,7 @@ body{
     text-decoration: none;
     color: #FFFAE6;
 }
-
+/* ----------------------content----------------------*/
 .main-content{
     font-size: 1.5rem;
     justify-content: center;
@@ -60,30 +62,34 @@ body{
     width: 100vw;
     padding: 20px;
 }
-
+/* ----------------------footer----------------------*/
 .main-footer{
-    
     position: absolute;
     bottom: 0;
     background-color:   rgba(43, 32, 27, 42%);
     width: 100vw;
 }
 .main-footer div{
-    /* margin: 15px;
-    padding: 5px; */
+    margin: 0 0 0 20px ;
+    padding: 5px;
     color: #FFFAE6;
     font-size: 2rem;
-   
 }
-.main-footer ol{
-    list-style: none;
+.paw-list-mark {
+    list-style: url("../assets/List-Mark/paw.svg");
+
+}
+.main-footer  ol{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 .main-footer ul{
+    list-style: none;
+}
+.main-footer .socal-media{
+    list-style: none;
     position: absolute;
     right: 3%;
-    list-style: none;
 }
 
 /* *************************Sub-page*************************/
