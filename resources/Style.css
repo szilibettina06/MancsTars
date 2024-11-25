@@ -106,4 +106,22 @@ body{
     bottom: 0;
 }
 /* *************************Dogs-page-style*************************/
+/* *************************Cats-page-style*************************/
+/* *************************Shelters-page-style*************************/
+/* *************************Details-page-style*************************/
+.detailsImg{
+    height: 200px;
+    width: 200px;
+    border: 2px solid #2B201B;
+    border-radius: 3%;
+    position: absolute;
+    left: 5%;
+}
 
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.detailsContent{
+    
+}
