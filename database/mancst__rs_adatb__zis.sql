@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2024. Dec 02. 08:58
+-- Létrehozás ideje: 2024. Dec 05. 13:12
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `mancstárs_adatbázis`
 --
+
+DELIMITER $$
+--
+-- Eljárások
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllCat` ()   SELECT * FROM `cat`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllDog` ()   SELECT * FROM `dog`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllShelter` ()   SELECT * FROM `shelter`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllUsers` ()   SELECT * FROM `User`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `emailIN` VARCHAR(100), IN `passwordIN` VARCHAR(255))   SELECT * FROM `user`WHERE `user`.`email` = emailIN AND `user`.`password` = SHA1 (passwordIN)$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -297,8 +313,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `age`, `email`, `password`, `phone_number`) VALUES
-(1, 'Minta', 'Péter', 25, 'Mintapeter11@gmail.com', '$2y$10$nMAPHuDCX.RxBZ9eH.gs.urnBS72j7Juj6.VnkI6xc5DRgfriWUra', '06203456780'),
-(2, 'Minta ', 'Lajos', 22, 'Mintalajos10@gmail.com', '$2y$10$kT0TBR.zhZjfxeIkBfbdH.ZzzQhkoQ1tFjIHFzrjYdvmZOYqEjtRi', '06704567432');
+(1, 'Minta', 'Péter', 25, 'Mintapeter11@gmail.com', '447d51f174e77350c26333cffd2b1470b769865d', '06203456780'),
+(2, 'Minta ', 'Lajos', 22, 'Mintalajos10@gmail.com', '447d51f174e77350c26333cffd2b1470b769865d', '06704567432');
 
 -- --------------------------------------------------------
 
