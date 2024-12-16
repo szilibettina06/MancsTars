@@ -1,0 +1,33 @@
+.main-footer {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(43, 32, 27, 80%);
+    width: 100vw;
+}
+
+.main-footer div {
+    margin: 0 0 0 20px;
+    padding: 5px;
+    color: #FFFAE6;
+    font-size: 1rem;
+}
+
+.paw-list-mark {
+    list-style: url("../../../../public/_assets/icons/List-Mark/paw.svg");
+
+}
+
+.main-footer ol {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-footer ul {
+    list-style: none;
+}
+
+.main-footer .socal-media {
+    list-style: none;
+    position: absolute;
+    right: 3%;
+}

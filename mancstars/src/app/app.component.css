@@ -1,0 +1,23 @@
+.mainPage{
+    background-image: url('../../public/_assets/images/main-page-img/Main-Page-Background.jpg');
+}
+.bg{
+    background-color:#FFFAE6;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: center;
+    transform: none;
+}
+.background-wrapper{
+    padding: 0;
+    margin: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: center;
+    transform: none;
+}
