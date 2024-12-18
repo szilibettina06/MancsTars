@@ -54,6 +54,7 @@ public class User implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "last_name")
     private String lastName;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "age")

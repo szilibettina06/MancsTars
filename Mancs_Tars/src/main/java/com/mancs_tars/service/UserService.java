@@ -7,6 +7,7 @@ package com.mancs_tars.service;
 import com.mancs_tars.model.User;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.json.JSONObject;
 
 /**
  *
@@ -47,7 +48,15 @@ public class UserService {
 
         return hasNumber && hasUpperCase && hasLowerCase && hasSpecialChar;
     }
-    
+    public JSONObject login(String email, String password){
+        JSONObject toReturn = new JSONObject();
+        String status = "success";
+        int statusCode = 200;
+        
+        if (isValidEmail(email)){
+            User modelResult = layer.login
+        }
+    }
     
     
 }
