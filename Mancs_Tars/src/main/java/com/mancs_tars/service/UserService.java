@@ -54,9 +54,39 @@ public class UserService {
         int statusCode = 200;
         
         if (isValidEmail(email)){
-            User modelResult = layer.login
+            User modelResult = layer.login(email, password);
+            
+            if (modelResult  == null) {
+                status = "modelExpection";
+                statusCode = 500;
+            } else {
+                if (modelResult.getId() == null) {
+                    status = "userNotFound";
+                    statusCode = 417;
+                } else {
+                    JSONObject result = new JSONObject();
+                    result.put("id", modelResult.getId());
+                    result.put("email", modelResult.getEmail());
+                    result.put("firtName", modelResult.getFirstName());
+                    result.put("lastName", modelResult.getLastName());
+                    result.put("isAdmin", modelResult.getIsAdmin());
+                    result.put("isDeleted", modelResult.getIsDeleted() );
+                    
+                    toReturn.put("result", result);
+                }
+            }
+        } else {
+            status = "invalidEmail";
+            statusCode = 417;
         }
+        toReturn.put("status", status);
+        toReturn.put("statusCode", statusCode);
+        return toReturn;
+        
     }
-    
-    
 }
+        
+
+            
+            
+            

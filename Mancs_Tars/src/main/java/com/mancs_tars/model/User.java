@@ -5,6 +5,7 @@
 package com.mancs_tars.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -75,6 +78,22 @@ public class User implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "phone_number")
     private String phoneNumber;
+      @Basic(optional = false)
+    @NotNull
+    @Column(name = "is_admin")
+    private boolean isAdmin;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+    @Column(name = "deleted_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deletedAt;
 
     public User() {
     }
@@ -83,7 +102,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User(Integer id, String firstName, String lastName, int age, String email, String password, String phoneNumber) {
+    public User(Integer id, String firstName, String lastName, int age, String email, String password, String phoneNumber, boolean isAdmin, boolean isDeleted, Date createdAt, Date deletedAt) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -91,6 +110,10 @@ public class User implements Serializable {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.isAdmin = isAdmin;
+        this.isDeleted = isDeleted;
+        this.createdAt = createdAt;
+        this.deletedAt = deletedAt;
     }
 
     public Integer getId() {
@@ -121,6 +144,16 @@ public class User implements Serializable {
         return age;
     }
 
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+    
+
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+    
     public void setAge(int age) {
         this.age = age;
     }
@@ -172,6 +205,10 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "com.mancs_tars.model.User[ id=" + id + " ]";
+    }
+
+    public User login(String email, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
