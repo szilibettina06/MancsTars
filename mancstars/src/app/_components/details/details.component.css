@@ -1,0 +1,25 @@
+.img{
+    height: 500px;
+}
+.details{
+    text-transform: uppercase;
+    margin: 20px 190px 20px 200px;
+    
+}
+.details .left {
+    text-align: left;
+    color: #2B201B;
+}
+.details .right{
+    text-align: right;
+    color: #2B201B;
+    
+}
+.details .left h2{
+    text-align: left;
+    color: #2B201B;
+}
+.details .right h2{
+    text-align: right;
+    color: #2B201B;
+}
