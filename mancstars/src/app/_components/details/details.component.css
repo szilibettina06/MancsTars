@@ -23,3 +23,54 @@
     text-align: right;
     color: #2B201B;
 }
+.left{
+    display: flex;
+    flex-direction: row;
+}
+.details-img{
+    height: 200px;
+    width: 200px;
+    border: 2px solid #2B201B;
+    border-radius: 20px;
+}
+.right {
+    display: flex;
+    flex-direction: row;
+    
+}
+.main-footer {
+    position: sticky;
+    bottom: 0;
+    background-color: #EEEAD9;
+    width: 97vw;
+    float: right;
+    margin: 0 auto;
+}
+
+.main-footer div {
+    margin: 0 0 0 20px;
+    padding: 5px;
+    color: #2B201B;
+    font-size: 1rem;
+}
+
+.paw-list-mark {
+    list-style: url("../../../../public/_assets/icons/List-Mark/darkPaw.svg");
+    
+
+}
+
+.main-footer ol {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-footer ul {
+    list-style: none;
+}
+
+.main-footer .socal-media {
+    list-style: none;
+    position: absolute;
+    right: 3%;
+}
