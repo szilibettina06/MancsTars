@@ -52,10 +52,10 @@ a:active {
 .main-content div {
     text-align: center;
     border-top: 3px solid #FFFAE6;
-    border-bottom: 3px solid #FFFAE6;
-    background-color: rgba(43, 32, 27, 20%);
+    border-bottom: 3px solid #FFFAE6; 
+     background-color: rgba(43, 32, 27, 20%);
     color: #FFFAE6;
-    width: 197vh;
+    width:100vw;
     padding: 20px;
 }
 
