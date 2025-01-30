@@ -7,7 +7,7 @@ div {
     text-align: center;
 
 }
-div .open_btn {
+div .succsesBtn {
     background-color: #A58796;
     color: white;
     border: 1px solid #A58796;
@@ -20,4 +20,8 @@ div .open_btn {
     margin: 20px auto 0 auto;
     cursor: pointer;
     font-size: 20px;
+}
+.succsesBtn a{
+    color: #FFFAE6;
+    text-decoration: none;
 }

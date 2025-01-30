@@ -61,7 +61,10 @@ h1 {
 .loginBtn:hover {
     background-color: #AB7892;
 }
-
+.loginBtn a{
+    text-decoration: none;
+    color: #FFFAE6;
+}
 
 @media screen and (max-width: 520px) {
     #form {
