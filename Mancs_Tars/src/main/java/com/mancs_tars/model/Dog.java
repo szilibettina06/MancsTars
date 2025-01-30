@@ -197,6 +197,7 @@ public class Dog implements Serializable {
 
     public int getApartmnetFriendly() {
         return apartmnetFriendly;
+        
     }
 
     public void setApartmnetFriendly(int apartmnetFriendly) {
