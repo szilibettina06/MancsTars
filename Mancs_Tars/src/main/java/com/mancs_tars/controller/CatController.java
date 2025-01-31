@@ -96,6 +96,7 @@ public class CatController {
                toAdd.put("userId", actualCat.getUserId());
                toAdd.put("shelterId", actualCat.getShelterId());
                
+               
                result.put(toAdd);
                
                
