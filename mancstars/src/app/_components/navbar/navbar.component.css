@@ -12,7 +12,29 @@
     position: absolute;
     bottom: 0;
 }
-.SubNavBar .Settings img:hover{
+
+/* Hover állapotok */
+.SubNavBar .Settings img:hover {
     background-color: rgba(165, 135, 150, 50%);
     transition: 0.1s;
+}
+
+.SubNavBar .dogs:hover,
+.active-dogs {
+    background-color: #E56861;
+}
+
+.SubNavBar .cats:hover,
+.active-cats {
+    background-color: #FFA570;
+}
+
+.SubNavBar .shelters:hover,
+.active-shelters {
+    background-color: #C1EA88;
+}
+
+.SubNavBar .details:hover,
+.active-details {
+    background-color: #A5EBC2;
 }

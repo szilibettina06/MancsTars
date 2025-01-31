@@ -1,23 +1,39 @@
 <nav class="SubNavBar">
-    <div class="SubNavBar">
-      <div>
-        <a href="#"><img src="../../../../_assets/icons/Navbar/Default-options/menu.svg" alt="menu" /></a>
+  <div class="SubNavBar">
+    <div>
+      <a href="#">
+        <img src="../../../../_assets/icons/Navbar/Default-options/menu.svg" alt="menu" />
+      </a>
 
-        <a href="dogs"><img src="../../../../_assets/icons/Navbar/Default-options/dogs.svg" alt="dogs" /></a>
+      <a >
+        <img [routerLink]="'/dogs'" [ngClass]="{ 'active-dogs': currentRoute === '/dogs' }" class="dogs" src="../../../../_assets/icons/Navbar/Default-options/dogs.svg" alt="dogs" />
+      </a>
 
-        <a href="cats"><img src="../../../../_assets/icons/Navbar/Default-options/cats.svg" alt="cats" /></a>
+      <a >
+        <img [routerLink]="'/cats'" [ngClass]="{ 'active-cats': currentRoute === '/cats' }" class="cats" src="../../../../_assets/icons/Navbar/Default-options/cats.svg" alt="cats" />
+      </a>
 
-        <a href="shelters"><img src="../../../../_assets/icons/Navbar/Default-options/pin-alt.svg" alt="shelter" /></a>
+      <a >
+        <img [routerLink]="'/shelters'" [ngClass]="{ 'active-shelters': currentRoute === '/shelters' }" class="shelters" src="../../../../_assets/icons/Navbar/Default-options/pin-alt.svg" alt="shelter" />
+      </a>
 
-        <a href="details"><img src="../../../../_assets/icons/Navbar/Default-options/chat.svg" alt="Details" /></a>
-      </div>
-
-      <div class="Settings">
-        <a href="#"><img src="../../../../_assets/icons/Navbar/Default-options/user-alt.svg" alt="profile" /></a>
-
-        <a href="#"><img src="../../../../_assets/icons/Navbar/Default-options/setting-line.svg" alt="settings" /></a>
-
-        <a href="successlogout"><img src="../../../../_assets/icons/Navbar/Default-options/sign-in-squre.svg" alt="sign out" /></a>
-      </div>
+      <a >
+        <img [routerLink]="'/details'" [ngClass]="{ 'active-details': currentRoute === '/details' }" class="details" src="../../../../_assets/icons/Navbar/Default-options/chat.svg" alt="Details" />
+      </a>
     </div>
-  </nav>
+
+    <div class="Settings">
+      <a href="#">
+        <img src="../../../../_assets/icons/Navbar/Default-options/user-alt.svg" alt="profile" />
+      </a>
+
+      <a href="#">
+        <img src="../../../../_assets/icons/Navbar/Default-options/setting-line.svg" alt="settings" />
+      </a>
+
+      <a [routerLink]="'/successlogout'">
+        <img src="../../../../_assets/icons/Navbar/Default-options/sign-in-squre.svg" alt="sign out" />
+      </a>
+    </div>
+  </div>
+</nav>

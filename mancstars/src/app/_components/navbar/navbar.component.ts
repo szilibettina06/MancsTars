@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,RouterModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  currentRoute: string = '';
 
+  constructor(private router: Router) {
+    this.router.events.subscribe(() => {
+      this.currentRoute = this.router.url;
+    });
+  }
 }
