@@ -4,14 +4,23 @@
  */
 package com.mancs_tars.controller;
 
+
+import com.mancs_tars.model.User;
+import com.mancs_tars.service.ShelterService;
+import com.mancs_tars.service.UserService;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * REST Web Service
@@ -48,5 +57,56 @@ public class UserController {
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
     public void putXml(String content) {
+    }
+   @GET
+    @Path("getAllUsers")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllUsers() {
+        JSONObject toReturn = new JSONObject();
+        String status = "success";
+        int statusCode =  200;
+        
+          
+        List<User> userList = UserService.getAllUsers();
+       
+       if (userList == null){
+           status = "Modelexception";
+           statusCode = 500; 
+       } else if (userList.isEmpty()) {
+           status = "NoUsersFound";
+           statusCode = 417;
+       } else {
+           JSONArray result = new JSONArray();
+           
+           for (User actualUser : userList) {
+               JSONObject toAdd = new JSONObject();
+               toAdd.put("id", actualUser.getId());
+               toAdd.put("firstName", actualUser.getFirstName());
+               toAdd.put("lastName", actualUser.getLastName());
+               toAdd.put("email", actualUser.getEmail());
+               toAdd.put("phoneNumber", actualUser.getPhoneNumber());
+               toAdd.put("age", actualUser.getAge());
+               toAdd.put("isAdmin", actualUser.getIsAdmin());
+               toAdd.put("isDeleted", actualUser.getIsDeleted());
+               toAdd.put("password", actualUser.getPassword());
+             
+               
+               result.put(toAdd);
+               
+               
+               
+           }
+           
+           toReturn.put("result", result);
+       }
+       
+       toReturn.put("status", status);
+       toReturn.put("StatusCode", statusCode);
+       
+       return Response.status(statusCode).entity(toReturn.toString()).type(MediaType.APPLICATION_JSON).build();
+              
+               
+      
+        
     }
 }

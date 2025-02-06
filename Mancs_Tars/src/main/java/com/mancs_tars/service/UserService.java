@@ -4,9 +4,16 @@
  */
 package com.mancs_tars.service;
 
+
 import com.mancs_tars.model.User;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import org.json.JSONObject;
 
 /**
@@ -84,7 +91,29 @@ public class UserService {
         return toReturn;
         
     }
-}
+      private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("com_Mancs_Tars_war_1.0-SNAPPU");
+   
+   public static List<User> getAllUsers(){
+       EntityManager em = emf.createEntityManager();
+       List<User> userList = new ArrayList<>();
+       
+       try {
+           Query query = em.createQuery("SELECT u FROM User u");
+           userList = query.getResultList();
+           
+       } catch (Exception e) {
+           System.err.println("Hiba: " + e.getLocalizedMessage());
+           
+          
+       } finally {
+           em.clear();
+           em.close();
+       }
+       return userList;
+   }
+    
+    }
+
         
 
             
