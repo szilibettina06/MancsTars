@@ -1,34 +1,59 @@
-import { Component} from '@angular/core';
-import { NavbarComponent } from "../navbar/navbar.component";
-import { FormsModule } from '@angular/forms';
-import { FooterComponent } from '../footer/footer.component';
+import { Component } from '@angular/core';
 import { LoginService } from '../../_services/login.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormGroup } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Validator } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, FormsModule],
+  imports: [ FormsModule,  CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent{
-  loginUser: string = "";
-  loginPass: string = "";
+  loginForm: FormGroup;
   errorMessage: string = "";
+  isLoading: boolean = false;
+  showPassword: boolean = false;
 
-  constructor(private loginService: LoginService, private router: Router) {}
-
-  onLogin() {
-    if (!this.loginUser || !this.loginPass) {
-      this.errorMessage = 'Please fill in all fields.';
-      return;
-    }
-
-    if(this.loginService.adminLoginFunc(this.loginUser, this.loginPass)) {
-      this.router.navigate(['dogs']);
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router:Router
+  ) {
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
+  }
+  onSubmit(): void{
+    if (this.loginForm.valid) {
+      this.errorMessage = ''
+      const { username, password } = this.loginForm.value;
+      this.loginService.authenticate(username, password).subscribe({
+        next: () => {
+          this.router.navigate(['/dogs']);
+        },
+        error: (error) => {
+          this.errorMessage = error.message;
+          this.isLoading = true;
+        },
+        complete: () => {
+          this.isLoading = true;
+        }
+      });
     } else {
-      this.errorMessage = 'Invalid email or password.' + 'Please try again.';
+      this.loginForm.markAllAsTouched();
+
     }
   }
+  togglePassword(): void{
+    this.showPassword = !this.showPassword;
+    
+  }
+
 }

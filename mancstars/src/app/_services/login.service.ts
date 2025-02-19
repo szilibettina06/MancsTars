@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable,of, throwError } from 'rxjs';
+import { Router } from '@angular/router';
+
 interface User{
   username: string,
   password:string
@@ -8,29 +11,25 @@ interface User{
 })
 export class LoginService {
 
-  private adminLogin: User[] = [
-    { username: 'mintapeter', password: 'almafa123'},
-  ];
+   constructor(private router: Router) { }
+  private readonly VALID_USERNAME = ' admin';
+  private readonly VALID_PASSWORD = '1234';
 
-  private userLogin: User[] = [
-    { username: 'mintalajos' , password: 'Almafa123'},
-    
-  ]
-
-  constructor() { }
-
-  adminLoginFunc(username: string, password: string): boolean {
-    return this.adminLogin.some(admin => admin.username === username && admin.password === password);
-  }
-
-  userLoginFunc(username: string, password: string): boolean {
-    if(this.userLogin.some(user => user.username === username && user.password === password)) {
-      return true;
+  authenticate(username: string, password: string): Observable<boolean>{
+    if (username===this.VALID_USERNAME && password===this.VALID_PASSWORD) {
+      localStorage.setItem('isLoggedIn', 'true');
+      this.router.navigate(['/dogs']);
+      return of(true);
     }
+    return throwError(() => new Error('Hibás felhasználonév vagy jelszó'));
 
-    const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
-
-    return users.some(user => user.username === username && user.password === password);
+  }
+  isLoggedIn(): boolean{
+    return localStorage.getItem('isLoggedIn') === 'true';
+  }
+  logout(): void{
+    localStorage.removeItem('isLoggedIn');
+    this.router.navigate(['/login']);
   }
 
 }

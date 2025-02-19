@@ -10,12 +10,13 @@ import { EnteremailComponent } from './_components/_forgotpassword/enteremail/en
 import { VerifyComponent } from './_components/_forgotpassword/verify/verify.component';
 import { ChangepasswordComponent } from './_components/_forgotpassword/changepassword/changepassword.component';
 import { SucceslogoutComponent } from './_components/succeslogout/succeslogout.component';
+import { AuthenticationGuard } from './_guards/auth.guard';
 
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'dogs', component: DogsComponent },
+    { path: 'dogs', component: DogsComponent, canActivate: [AuthenticationGuard]  },
     { path: 'cats', component: CatsComponent },
     { path: 'shelters', component: SheltersComponent },
     { path: 'details', component: DetailsComponent },

@@ -1,17 +1,65 @@
-<form action="" id="form">
-  <h1>Log in</h1>
-  <div class="input-group">
-    <input type="text" id="username" name="username" placeholder="Username" />
-    <div class="errorMessage"></div>
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Login</h1>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      @if(errorMessage){
+      <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ errorMessage }}
+      </div>
+      }
+      <div class="form-group">
+        <label for="username"> Username </label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          placeholder="Ird be a felhasználóneved"
+          [class.invalid]="
+            loginForm.get('username')?.invalid &&
+            loginForm.get('username')?.touched
+          "
+        />
+        @if(loginForm.get('username')?.invalid &&
+        loginForm.get('username')?.touched){
+        <span class="error">Username is required.</span>
+        }
+      </div>
+      
+      <div class="form-group">
+        <label for="password"> Password </label>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          formControlName="password"
+          placeholder="Ird be a jelszavad"
+          [class.invalid]="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        />
+        <button
+          type="button"
+          class="toggle-password"
+          (click)="togglePassword()"
+        >
+          <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+        </button>
+      </div>
+      @if(loginForm.get('password')?.invalid &&
+      loginForm.get('password')?.touched){
+      <span class="error"> Password is required.</span>
+      }
+
+      <div>
+        <a href="signin">Don't have an account? Register one here!</a>
+        <br />
+        <a href="enteremail">Forgot Password?</a>
+      </div>
+      <button class="loginBtn" type="submit" (click)="onSubmit">login</button>
+    </form>
   </div>
-  <div class="input-group">
-    <input type="password" id="password" name="password" placeholder="Password"/>
-    <div class="errorMessage"></div>
-  </div>
-  <div>
-    <a href="signin">Don't have an account? Register one here!</a>
-    <br />
-    <a href="enteremail">Forgot Password?</a>
-  </div>
-  <button class="loginBtn" type="submit" ><a href="dogs">Sign in</a></button>
-</form>
+</div>
+
