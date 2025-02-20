@@ -1,0 +1,40 @@
+.SubNavBar {
+    background-color: #EEEAD9;
+    position: fixed;
+    height: 100%;
+    width: 63px;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.SubNavBar .Settings {
+    position: absolute;
+    bottom: 0;
+}
+
+/* Hover állapotok */
+.SubNavBar .Settings img:hover {
+    background-color: rgba(165, 135, 150, 50%);
+    transition: 0.1s;
+}
+
+.SubNavBar .dogs:hover,
+.active-dogs {
+    background-color: #E56861;
+}
+
+.SubNavBar .cats:hover,
+.active-cats {
+    background-color: #FFA570;
+}
+
+.SubNavBar .shelters:hover,
+.active-shelters {
+    background-color: #C1EA88;
+}
+
+.SubNavBar .details:hover,
+.active-details {
+    background-color: #A5EBC2;
+}

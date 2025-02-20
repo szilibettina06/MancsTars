@@ -1,0 +1,84 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-attachment: fixed;
+
+}
+.enteremail-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #A5EBC2 0%, #C1EA88 100%);
+    padding: 1rem;
+
+
+}
+
+#form {
+    width: 500px;
+    margin: 10vh auto 0 auto;
+    border-radius: 15px;
+    padding: 30px;
+    background-color: #FFFAE6;
+
+}
+
+h1 {
+    text-align: center;
+    color: #2B201B;
+}
+
+.input-group {
+    display: flex;
+    /* egymás allá teszi*/
+    flex-direction: column;
+    margin-bottom: 15px;
+
+}
+
+.input-group input {
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #A58796;
+}
+
+.input-group .error {
+    color: red;
+    margin-top: 5px;
+    font-size: 15px;
+
+}
+
+#form .open_btn {
+    background-color: #A58796;
+    color: white;
+    border: 1px solid #A58796;
+    border-radius: 25px;
+    width: 150px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto 0 auto;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 520px) {
+    #form {
+        width: auto;
+        margin: 15vh auto 0 auto;
+        border-radius: 5px;
+        padding: 30px;
+    }
+
+}
+
+#back-arrow {
+    color: white;
+    margin: 15px auto 0 auto;
+    font-size: 40px;
+}

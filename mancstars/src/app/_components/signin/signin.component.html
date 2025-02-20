@@ -1,0 +1,66 @@
+<div class="signin-container">
+  <form id="form" (ngSubmit)="onSubmit()">
+    <h1>Sign in</h1>
+    <br>
+    <div class="input-group">
+      <input type="text" id="username" name="username" placeholder="Username" />
+      <div class="errorMessage"></div>
+    </div>
+    <div class="input-group">
+      <input type="email" id="email" name="email" placeholder="Email" />
+      <div class="errorMessage"></div>
+    </div>
+    <div class="input-group">
+      <input type="text" id="BDate" name="birthdate" placeholder="Birthdate" />
+      <div class="errorMessage"></div>
+    </div>
+    <div class="input-group">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        id="password"
+        name="password"
+        placeholder="Password"
+      />
+      <div class="errorMessage"></div>
+      <button type="button" class="toggle-password" (click)="togglePassword()">
+        <i
+          id="eye"
+          [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"
+        ></i>
+      </button>
+
+      @if(registerForm.get('password')?.invalid &&
+      registerForm.get('password')?.touched){
+      <span class="error"> Password is required.</span>
+      }
+    </div>
+
+    <div class="input-group">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        id="password"
+        name="password"
+        placeholder="Confirm Password"
+      />
+      <div class="errorMessage"></div>
+      <button type="button" class="toggle-password" (click)="togglePassword()">
+        <i
+          id="eye"
+          [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"
+        ></i>
+      </button>
+
+      @if(registerForm.get('password')?.invalid &&
+      registerForm.get('password')?.touched){
+      <span class="error"> Password is required.</span>
+      }
+    </div>
+
+    <div>
+      <button class="login-here" (click)="loginHere()">
+        Already have an account? Login here!
+      </button>
+    </div>
+    <button class="signBtn" type="submit" (click)="onSubmit()">Sign in</button>
+  </form>
+</div>
