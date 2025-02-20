@@ -4,7 +4,16 @@ body {
     background-attachment: fixed;
 
 }
+.enteremail-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #A5EBC2 0%, #C1EA88 100%);
+    padding: 1rem;
 
+
+}
 
 #form {
     width: 500px;
