@@ -55,11 +55,9 @@ export class LoginComponent{
     this.showPassword = !this.showPassword;
     
   }
-  onLogin() {
-    if (this.loginForm.valid) {
-      this.router.navigateByUrl('/dogs');
-    }
-    
+  onLogin(): void {
+    this.router.navigateByUrl('/dogs');
+      
   }
   registerHere(): void{
     this.router.navigateByUrl('/signin');

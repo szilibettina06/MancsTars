@@ -1,13 +1,21 @@
-div {
-    width: 400px !important;
+.background{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #A5EBC2 0%, #C1EA88 100%);
+    padding: 1rem;
+}
+.succes-card {
+    max-width: 400px !important;
     margin: 10vh auto 0 auto;
     border-radius: 15px;
     padding: 40px;
     background-color: #FFFAE6;
     text-align: center;
-    margin-top: 250px;
+    margin-top: 20px;
     font-size: 1.2rem;
-
+    
 }
 div .succsesBtn {
     background-color: #A58796;
