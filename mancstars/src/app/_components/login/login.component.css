@@ -10,7 +10,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #A5EBC2 0%, #C1EA88 100%);
     padding: 1rem;
 
 
@@ -54,7 +54,7 @@ body {
 
 
 .login-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: #FFFAE6;
     /* backdrop-filter: blur(10px);  */
     border-radius: 20px;
     padding: 2.5rem;

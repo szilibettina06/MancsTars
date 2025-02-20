@@ -12,7 +12,7 @@ export class SigninComponent {
   registerForm: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
-
+  showPassword: boolean = false;
   constructor(private fb: FormBuilder, private router: Router) {
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
@@ -48,7 +48,10 @@ export class SigninComponent {
   loginHere(): void{
     this.router.navigate(['/login']);
   }
-
+  togglePassword(): void{
+    this.showPassword = !this.showPassword;
+    
+  }
   //   this.errorMessage = '';
 
   //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

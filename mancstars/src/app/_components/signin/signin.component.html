@@ -22,6 +22,18 @@
       />
       <div class="errorMessage"></div>
     </div>
+    <button
+          type="button"
+          class="toggle-password"
+          (click)="togglePassword()"
+        >
+          <i id="eye" [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+        </button>
+      
+      @if(registerForm.get('password')?.invalid &&
+      registerForm.get('password')?.touched){
+      <span class="error"> Password is required.</span>
+      }
 
     <div class="input-group">
       <input
@@ -32,6 +44,18 @@
       />
       <div class="errorMessage"></div>
     </div>
+    <button
+          type="button"
+          class="toggle-password"
+          (click)="togglePassword()"
+        >
+          <i id="eye" [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+        </button>
+     
+      @if(registerForm.get('password')?.invalid &&
+      registerForm.get('password')?.touched){
+      <span class="error"> Password is required.</span>
+      }
     <div>
       <button class="login-here" (click)="loginHere()">
         Already have an account? Login here!
