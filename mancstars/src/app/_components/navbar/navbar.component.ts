@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../_services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,5 +17,9 @@ export class NavbarComponent {
     this.router.events.subscribe(() => {
       this.currentRoute = this.router.url;
     });
+  }
+  onLogOut(): void{
+    localStorage.removeItem('isLoggedIn');
+    this.router.navigate(['/successlogout']);
   }
 }

@@ -4,7 +4,16 @@ body {
     background-attachment: fixed;
 
 }
+.signin-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1rem;
 
+
+}
 
 #form {
     width: 500px;
@@ -76,4 +85,12 @@ h1 {
     color: white;
     margin: 15px auto 0 auto;
     font-size: 40px;
+}
+.login-here{
+    background: none;
+    border: none;
+}
+.login-here:hover, .login-here:active{
+    color: #A58796;
+    text-decoration: underline;
 }

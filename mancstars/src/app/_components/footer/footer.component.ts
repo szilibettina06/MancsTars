@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-
+  email: string = 'mancstars@gmail.com';
+  phonenumber: string = '+36 30 322 4344';
 }

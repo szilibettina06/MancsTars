@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-
+import { Observable,of, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -7,9 +8,5 @@ export class RegisterService {
 
   constructor() { }
 
-  public minDate = new Date('2009-01-01');
-
-  registerFunc(username: string, email: string, password: string, cpassword: string, bdate: Date): boolean {
-    return (username !== "" && email !== "" && password !== "" && cpassword !== "" && password === cpassword && bdate < this.minDate);
-  }
+ 
 }

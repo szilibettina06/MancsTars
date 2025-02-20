@@ -32,7 +32,7 @@ export class LoginComponent{
   }
   onSubmit(): void{
     if (this.loginForm.valid) {
-      this.errorMessage = ''
+      this.errorMessage = '';
       const { username, password } = this.loginForm.value;
       this.loginService.authenticate(username, password).subscribe({
         next: () => {
@@ -40,10 +40,10 @@ export class LoginComponent{
         },
         error: (error) => {
           this.errorMessage = error.message;
-          this.isLoading = true;
+          this.isLoading = false;
         },
         complete: () => {
-          this.isLoading = true;
+          this.isLoading = false;
         }
       });
     } else {
@@ -55,5 +55,16 @@ export class LoginComponent{
     this.showPassword = !this.showPassword;
     
   }
-
+  onLogin() {
+    if (this.loginForm.valid) {
+      this.router.navigateByUrl('/dogs');
+    }
+    
+  }
+  registerHere(): void{
+    this.router.navigateByUrl('/signin');
+  }
+  forgotPassword(): void{
+    this.router.navigate(['/enteremail']);
+  }
 }

@@ -25,7 +25,7 @@ export class LoginService {
 
   }
   isLoggedIn(): boolean{
-    return localStorage.getItem('isLoggedIn') === 'true';
+    return !localStorage.getItem('isLoggedIn');
   }
   logout(): void{
     localStorage.removeItem('isLoggedIn');

@@ -3,7 +3,7 @@
     <div class="login-header">
       <h1>Login</h1>
     </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form id="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       @if(errorMessage){
       <div class="error-message">
         <i class="fas fa-exclamation-circle"></i>
@@ -45,7 +45,7 @@
           class="toggle-password"
           (click)="togglePassword()"
         >
-          <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+          <i id="eye" [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
         </button>
       </div>
       @if(loginForm.get('password')?.invalid &&
@@ -54,11 +54,11 @@
       }
 
       <div>
-        <a href="signin">Don't have an account? Register one here!</a>
-        <br />
-        <a href="enteremail">Forgot Password?</a>
+        <button class="register-here" (click)="registerHere()">Don't have an account? Register one here!</button>
+        <button class="forgot-password" (click)="forgotPassword()" >Forgot Password?</button>
+        
       </div>
-      <button class="loginBtn" type="submit" (click)="onSubmit">login</button>
+      <button class="loginBtn" type="button" (click)="onLogin()">login</button>
     </form>
   </div>
 </div>
