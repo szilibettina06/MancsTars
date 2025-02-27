@@ -9,5 +9,5 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './shelters.component.css'
 })
 export class SheltersComponent {
-
+  baseUrl = "http://127.0.0.1:8080/Mancs_Tars-1.0-SNAP/webresources/shelter/getAllShelters";
 }

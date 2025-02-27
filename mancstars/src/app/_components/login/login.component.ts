@@ -15,49 +15,49 @@ import { Validator } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent{
-  loginForm: FormGroup;
+loginForm: FormGroup;
   errorMessage: string = "";
   isLoading: boolean = false;
-  showPassword: boolean = false;
+  showPassword: boolean = false; 
 
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private router:Router
-  ) {
+    private router: Router
+  ){
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
+
   onSubmit(): void{
-    if (this.loginForm.valid) {
-      this.errorMessage = '';
-      const { username, password } = this.loginForm.value;
-      this.loginService.authenticate(username, password).subscribe({
+    if(this.loginForm.valid){
+      this.errorMessage = ''
+
+      //Kinyerjük az űrlapból a felhasználnevet és a jelszót
+      const{username, password} = this.loginForm.value;
+
+      this.loginService.authenticate(username,password).subscribe({
         next: () => {
-          this.router.navigate(['/dogs']);
+          this.router.navigate(['/dogs']); //Sikeres bejelentkezés esetén átírányít a főoldalra
         },
-        error: (error) => {
+        error: (error) =>{
           this.errorMessage = error.message;
-          this.isLoading = false;
+          this.isLoading = false; //Betöltés leállítása a hiba esetén
         },
-        complete: () => {
-          this.isLoading = false;
+        complete: () =>{
+          this.isLoading = false; //A betöltési állapot visszaállítása, ha a folyamat véget ér
         }
       });
-    } else {
+    } else{
       this.loginForm.markAllAsTouched();
-
     }
   }
+
+  //A jelszó láthatóságának a beállítása
   togglePassword(): void{
     this.showPassword = !this.showPassword;
-    
-  }
-  onLogin(): void {
-    this.router.navigateByUrl('/dogs');
-      
   }
   registerHere(): void{
     this.router.navigateByUrl('/signin');
