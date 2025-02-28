@@ -11,6 +11,7 @@ import { VerifyComponent } from './_components/_forgotpassword/verify/verify.com
 import { ChangepasswordComponent } from './_components/_forgotpassword/changepassword/changepassword.component';
 import { SucceslogoutComponent } from './_components/succeslogout/succeslogout.component';
 import { AuthenticationGuard } from './_guards/auth.guard';
+import { DogsPopupComponent } from './_components/dogs-popup/dogs-popup.component';
 
 
 export const routes: Routes = [
@@ -25,5 +26,7 @@ export const routes: Routes = [
     { path: 'enteremail', component: EnteremailComponent },
     { path: 'verify', component: VerifyComponent },
     { path: 'changepassword', component: ChangepasswordComponent },
-    { path: 'successlogout', component: SucceslogoutComponent }
+    { path: 'successlogout', component: SucceslogoutComponent },
+    { path: 'dogspopup', component: DogsPopupComponent }
+    
 ];

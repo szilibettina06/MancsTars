@@ -13,9 +13,23 @@
             Breed: {{dog.breed}}
 
           </p>
-          <a href="#" class="showBtn">Show more</a>
+          <button class="showBtn" (click)="openPopup(dog)">Show more</button>
+          <!-- <a href="#" class="showBtn">Show more</a> -->
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="overlay" *ngIf="selectedDogs">
+  <div class="popup">
+    <button class="closeBtn" (click)="closePopup()">X</button>
+    <h2>{{ selectedDogs?.name }}</h2>
+    <p>
+        Age: {{ selectedDogs?.tendencyToEscape }} <br>
+        Gender: {{ selectedDogs?.tendencyToGainWeight }} <br>
+        Catfriendly: {{ selectedDogs?.catFriendly}}
+  </p>
+    
+  </div>
+</div>
+
