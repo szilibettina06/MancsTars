@@ -17,6 +17,8 @@
 }
 .card{
     height: 400px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 .card img{
     height: 200px;
@@ -34,3 +36,4 @@
     text-decoration: none;
 
 }
+

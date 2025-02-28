@@ -9,6 +9,8 @@
 }
 .card {
     height: 400px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .card img {

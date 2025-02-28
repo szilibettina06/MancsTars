@@ -15,7 +15,10 @@
     width: 1400px;
     display: flex;
     margin: 0 auto;
+    margin-bottom: 20px;
+
 }
+
 .card-body{
     text-align: center !important;
 }
