@@ -2,7 +2,7 @@
 
 <div class="container-fluid" id="shelterContainer">
   <div class="row">
-    <div class="col-12" *ngFor="let shelter of shelters">
+    <div class="col-12 " *ngFor="let shelter of shelters">
       <div class="card" id="shelterCard">
         <div class="card-body">
           <h5 class="card-title">{{ shelter.shelterName }}</h5>
@@ -11,14 +11,23 @@
             Email: {{ shelter.email }}<br />
             Address: {{ shelter.address }}
           </p>
-          <a
-            href="https://www.facebook.com/helpgazdikeresok/?locale=hu_HU"
-            class="btn"
-            >Show more</a
-          >
-        </div>
+           <button class="btn" (click)="openPopup(shelter)">Show more</button>
       </div>
     </div>
   </div>
 </div>
 <br />
+<div class="overlay" *ngIf="selectedShelter">
+  <div class="popup">
+    <button class="closeBtn" (click)="closePopup()">X</button>
+    <h2>{{ selectedShelter?.shelterName }}</h2>
+    <p>
+        Director name: {{ selectedShelter?.directorName }} <br>
+        Comment: {{ selectedShelter?.comment }} <br>
+        
+  </p>
+  <span>Page:</span>
+  <a [href]=" selectedShelter?.webAddress " target="_blank"> {{ selectedShelter?.webAddress }}</a>
+    
+  </div>
+</div>

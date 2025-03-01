@@ -6,6 +6,24 @@ import { HttpClient } from '@angular/common/http';
 import { CatsService } from '../../_services/cats.service';
 import { provideHttpClient } from "@angular/common/http";
 
+interface Cat {
+  gender: string;
+  tendencyToGainWeight: number;
+  health:number
+  breed: string;
+  playfulness: number;
+  dogFriendly: number
+  intelligence: number
+  tendencyToEscape: number;
+  energyLevel: number;
+  apartmentFriendly: number;
+  catImg: string;
+  name: string;
+  kidsFriendly: number;
+  age: string;
+
+}
+
 @Component({
   selector: 'app-cats',
   standalone: true,
@@ -17,8 +35,8 @@ import { provideHttpClient } from "@angular/common/http";
 export class CatsComponent {
   constructor(private http: HttpClient, private catsServices: CatsService) { }
     
-    cats: any[] = [];
-    
+    cats: Cat[] = [];
+    selectedCats: Cat | null = null;
   ngOnInit() {
     // összes lofasz betöltése az apiból
     this.catsServices.getCats().subscribe(data => {
@@ -28,5 +46,12 @@ export class CatsComponent {
       
     });
   }
+   openPopup(cat: Cat) {
+      this.selectedCats = cat;
+    }
+
+    closePopup() {
+      this.selectedCats = null;
+    }
     
 }

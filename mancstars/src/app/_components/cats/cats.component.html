@@ -12,9 +12,26 @@
             Breed: {{cat.breed}}
 
           </p>
-          <a href="#" class="showBtn">Show more</a>
+          <button class="showBtn" (click)="openPopup(cat)">Show more</button>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="overlay" *ngIf="selectedCats">
+  <div class="popup">
+    <button class="closeBtn" (click)="closePopup()">X</button>
+    <h2>{{ selectedCats?.name }}</h2>
+    <p>
+        Tendency to Escape: {{ selectedCats?.tendencyToEscape }} <br>
+        Tendency to Gain weight: {{ selectedCats?.tendencyToGainWeight }} <br>
+        Dog friendly: {{ selectedCats?.dogFriendly}} <br>
+        Energy level: {{ selectedCats?.energyLevel}} <br>
+        Apartment friendly: {{ selectedCats?.apartmentFriendly}} <br>
+        Health: {{ selectedCats?.health}} <br>
+        Intelligence: {{ selectedCats?.intelligence}} <br>
+        Kids friendly: {{ selectedCats?.kidsFriendly}}
+  </p>
+    
   </div>
 </div>
