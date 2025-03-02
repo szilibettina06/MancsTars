@@ -53,5 +53,10 @@ export class CatsComponent {
     closePopup() {
       this.selectedCats = null;
     }
-    
+    getStars(rating: number): string[] {
+    if (rating === undefined || rating === null) {
+    return []; 
+  }
+  return new Array(rating).fill('★').concat(new Array(5 - rating).fill('☆'));
+}
 }

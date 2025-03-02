@@ -113,6 +113,7 @@ input.invalid {
     color: #718096;
     cursor: pointer;
     padding: 0;
+    
 }
 
 .toggle-password:hover {

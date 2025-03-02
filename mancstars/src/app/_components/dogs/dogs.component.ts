@@ -27,7 +27,6 @@ interface Dog {
   age: string;
 
 }
-
 @Component({
   selector: 'app-dogs',
   standalone: true,
@@ -38,7 +37,6 @@ interface Dog {
 })
 export class DogsComponent {
  constructor(private http: HttpClient, private dogsServices: DogsService, private router: Router) { }
-  
   dogs: Dog[] = [];
   selectedDogs: Dog | null = null;
   ngOnInit() {
@@ -47,8 +45,7 @@ export class DogsComponent {
       console.log('API válasz:', data);
       this.dogs = data.result;  
     });
-    
-    
+   
   }
   openPopup(dog: Dog) {
       this.selectedDogs = dog;
@@ -58,8 +55,12 @@ export class DogsComponent {
       this.selectedDogs = null;
     }
 
- 
-  
+  getStars(rating: number): string[] {
+    if (rating === undefined || rating === null) {
+    return []; 
+  }
+  return new Array(rating).fill('★').concat(new Array(5 - rating).fill('☆'));
+}
   
 }
 

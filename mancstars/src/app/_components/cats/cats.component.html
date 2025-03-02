@@ -18,20 +18,80 @@
     </div>
   </div>
 </div>
-<div class="overlay" *ngIf="selectedCats">
-  <div class="popup">
-    <button class="closeBtn" (click)="closePopup()">X</button>
-    <h2>{{ selectedCats?.name }}</h2>
-    <p>
-        Tendency to Escape: {{ selectedCats?.tendencyToEscape }} <br>
-        Tendency to Gain weight: {{ selectedCats?.tendencyToGainWeight }} <br>
-        Dog friendly: {{ selectedCats?.dogFriendly}} <br>
-        Energy level: {{ selectedCats?.energyLevel}} <br>
-        Apartment friendly: {{ selectedCats?.apartmentFriendly}} <br>
-        Health: {{ selectedCats?.health}} <br>
-        Intelligence: {{ selectedCats?.intelligence}} <br>
-        Kids friendly: {{ selectedCats?.kidsFriendly}}
-  </p>
-    
+<div class="overlay" *ngIf="selectedCats" (click)="closePopup()">
+  <div class="popup" (click)="$event.stopPropagation()">
+    <!-- <button class="closeBtn" (click)="closePopup()">X</button> -->
+     
+    <div>
+      <img
+        class="popup-img"
+        [src]="selectedCats.catImg"
+        alt="{{ selectedCats.catImg }}"
+      />
+    </div>
+    <br>
+    <div class="content">
+      <h2>{{ selectedCats?.name }}</h2>
+      <p>
+        Tendency to Escape:
+        <span *ngIf="selectedCats?.tendencyToEscape !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.tendencyToEscape)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Health:
+        <span *ngIf="selectedCats?.health !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.health)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Intelligence:
+        <span *ngIf="selectedCats?.intelligence !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.intelligence)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Tendency to Gain weight:
+        <span *ngIf="selectedCats?.tendencyToGainWeight !== undefined">
+          <span
+            *ngFor="let star of getStars(selectedCats.tendencyToGainWeight)"
+          >
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Cat friendly:
+        <span *ngIf="selectedCats?.dogFriendly !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.dogFriendly)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Energy level:
+        <span *ngIf="selectedCats?.energyLevel !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.energyLevel)">
+            {{ star }}
+          </span>
+        </span>
+     <br>
+        Apartment friendly:
+        <span *ngIf="selectedCats?.apartmentFriendly !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.apartmentFriendly)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Kids friendly:
+        <span *ngIf="selectedCats?.kidsFriendly !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.kidsFriendly)">
+            {{ star }}
+          </span>
+        </span>
+      </p>
+    </div>
   </div>
 </div>
+

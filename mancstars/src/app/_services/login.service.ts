@@ -13,7 +13,7 @@ export class LoginService {
   constructor(private router: Router) { }
 
      //A beégetett felhasználónév beállítása
-  private readonly VALID_USERNAME = 'admin';
+  private readonly VALID_USERNAME = 'user';
   //A beégetett jelszó beállítása
   private readonly VALID_PASSWORD = '1234';
 

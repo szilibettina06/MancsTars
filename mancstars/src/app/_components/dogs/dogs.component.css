@@ -66,3 +66,21 @@
 .closeBtn:hover{
     color: #E56861;
 }
+.popup-img{
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
+
+    
+}
+#content{
+    text-align: left;
+    margin: 10px;
+}
+span {
+    color: #A58796;
+    font-size: 20px;
+}
+p{
+    max-width: 300px;
+}

@@ -8,10 +8,9 @@
         <div class="card-body">
           <h5 id="name" class="card-title">{{ dog.name }}</h5>
           <p class="card-text">
-            Age: {{dog.age}} <br>
-            Gender: {{dog.gender}} <br>
-            Breed: {{dog.breed}}
-
+            Age: {{ dog.age }} <br />
+            Gender: {{ dog.gender }} <br />
+            Breed: {{ dog.breed }}
           </p>
           <button class="showBtn" (click)="openPopup(dog)">Show more</button>
           <!-- <a href="#" class="showBtn">Show more</a> -->
@@ -20,21 +19,78 @@
     </div>
   </div>
 </div>
-<div class="overlay" *ngIf="selectedDogs">
-  <div class="popup">
-    <button class="closeBtn" (click)="closePopup()">X</button>
-    <h2>{{ selectedDogs?.name }}</h2>
-    <p>
-        Tendency to Escape: {{ selectedDogs?.tendencyToEscape }} <br>
-        Tendency to Gain weight: {{ selectedDogs?.tendencyToGainWeight }} <br>
-        Cat friendly: {{ selectedDogs?.catFriendly}} <br>
-        Energy level: {{ selectedDogs?.energyLevel}} <br>
-        Apartment friendly: {{ selectedDogs?.apartmentFriendly}} <br>
-        Health: {{ selectedDogs?.health}} <br>
-        Intelligence: {{ selectedDogs?.intelligence}} <br>
-        Kids friendly: {{ selectedDogs?.kidsFriendly}}
-  </p>
-    
+<div class="overlay" *ngIf="selectedDogs" (click)="closePopup()">
+  <div class="popup" (click)="$event.stopPropagation()">
+    <!-- <button class="closeBtn" (click)="closePopup()">X</button> -->
+    <div>
+      <img
+        class="popup-img"
+        [src]="selectedDogs.dogImg"
+        alt="{{ selectedDogs.dogImg }}"
+      />
+    </div>
+    <br>
+    <div class="content">
+      <h2>{{ selectedDogs?.name }}</h2>
+      <p>
+        Tendency to Escape:
+        <span *ngIf="selectedDogs?.tendencyToEscape !== undefined">
+          <span *ngFor="let star of getStars(selectedDogs.tendencyToEscape)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Health:
+        <span *ngIf="selectedDogs?.health !== undefined">
+          <span *ngFor="let star of getStars(selectedDogs.health)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Intelligence:
+        <span *ngIf="selectedDogs?.intelligence !== undefined">
+          <span *ngFor="let star of getStars(selectedDogs.intelligence)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Tendency to Gain weight:
+        <span *ngIf="selectedDogs?.tendencyToGainWeight !== undefined">
+          <span
+            *ngFor="let star of getStars(selectedDogs.tendencyToGainWeight)"
+          >
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Cat friendly:
+        <span *ngIf="selectedDogs?.catFriendly !== undefined">
+          <span *ngFor="let star of getStars(selectedDogs.catFriendly)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Energy level:
+        <span *ngIf="selectedDogs?.energyLevel !== undefined">
+          <span *ngFor="let star of getStars(selectedDogs.energyLevel)">
+            {{ star }}
+          </span>
+        </span>
+     <br>
+        Apartment friendly:
+        <span *ngIf="selectedDogs?.apartmentFriendly !== undefined">
+          <span *ngFor="let star of getStars(selectedDogs.apartmentFriendly)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Kids friendly:
+        <span *ngIf="selectedDogs?.kidsFriendly !== undefined">
+          <span *ngFor="let star of getStars(selectedDogs.kidsFriendly)">
+            {{ star }}
+          </span>
+        </span>
+      </p>
+    </div>
   </div>
 </div>
-

@@ -2,7 +2,7 @@
   <div class="login-card">
     <div class="login-header">
       <h1>Welcome Back</h1>
-      <p>Please sign in to continue</p>
+      <p>Please log in to continue</p>
     </div>
     
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off" novalidate>
@@ -51,9 +51,11 @@
         @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
           <span class="error-hint">Password is required</span>
         }
+        <button class="register-here" (click)="registerHere()">Don't have an account? Register one here!</button>
+        <button class="forgot-password" (click)="forgotPassword()" >Forgot Password?</button>
       </div>
         <button type="submit" class="login-button" [disabled]="loginForm.invalid">
-          Sign In
+          Log In
         </button>
       </form>
     </div>
