@@ -2,7 +2,7 @@
 
 <div class="container-fluid" id="dogContainer">
   <div class="row">
-    <div class="col-3" *ngFor="let dog of dogs">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let dog of dogs">
       <div class="card">
         <img [src]="dog.dogImg" class="card-img-top" alt="{{ dog.name }}" />
         <div class="card-body">
@@ -13,7 +13,6 @@
             Breed: {{ dog.breed }}
           </p>
           <button class="showBtn" (click)="openPopup(dog)">Show more</button>
-          <!-- <a href="#" class="showBtn">Show more</a> -->
         </div>
       </div>
     </div>
@@ -21,7 +20,6 @@
 </div>
 <div class="overlay" *ngIf="selectedDogs" (click)="closePopup()">
   <div class="popup" (click)="$event.stopPropagation()">
-    <!-- <button class="closeBtn" (click)="closePopup()">X</button> -->
     <div>
       <img
         class="popup-img"

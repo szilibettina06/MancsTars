@@ -84,3 +84,30 @@ span {
 p{
     max-width: 300px;
 }
+/* reszponsiv  */
+/* @media (max-width: 1024px) {
+    #dog-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    #dog-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    #dog-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .card img {
+        height: 150px;
+    }
+
+    .card button {
+        font-size: 14px;
+        padding: 8px;
+    }
+} */

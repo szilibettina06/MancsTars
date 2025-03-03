@@ -2,7 +2,7 @@
 
 <div class="container-fluid" id="shelterContainer">
   <div class="row">
-    <div class="col-12 " *ngFor="let shelter of shelters">
+    <div  *ngFor="let shelter of shelters">
       <div class="card" id="shelterCard">
         <div class="card-body">
           <h5 class="card-title">{{ shelter.shelterName }}</h5>
@@ -19,7 +19,6 @@
 <br />
 <div class="overlay" *ngIf="selectedShelter" (click)="closePopup()">
   <div class="popup" (click)="$event.stopPropagation()">
-    <!-- <button class="closeBtn" (click)="closePopup()">X</button> -->
     <h2>{{ selectedShelter?.shelterName }}</h2>
     <p>
         Director name: {{ selectedShelter?.directorName }} <br>
