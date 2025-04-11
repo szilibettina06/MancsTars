@@ -113,7 +113,7 @@ public class UserController {
     @GET
     @Path("getAllUser")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response registerAdmin(@HeaderParam("token") String jwt) {
+    public Response getAllUser(@HeaderParam("token") String jwt) {
         int isValid = JWT.validateJWT(jwt);
 
         if (isValid == 1) {

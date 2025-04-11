@@ -273,9 +273,12 @@ public class User implements Serializable {
             spq.setParameter("emailIN", email);
             spq.setParameter("passwordIN", password);
             
-            spq.execute();
+            //spq.execute();
+            System.out.println(spq.execute());
+            System.out.println(email+password);
             
             List<Object[]> resultList = spq.getResultList();
+            
             User toReturn = new User();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             for(Object[] o : resultList){
@@ -293,7 +296,6 @@ public class User implements Serializable {
                 );
                 toReturn = u;
             }
-            
             return toReturn;
             
         } catch (NumberFormatException | ParseException e) {
