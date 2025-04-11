@@ -58,6 +58,7 @@ public class UserService {
 
         return hasNumber && hasUpperCase && hasLowerCase && hasSpecialChar;
     }
+    
 
     public JSONObject login(String email, String password) {
         JSONObject toReturn = new JSONObject();
@@ -68,12 +69,12 @@ public class UserService {
             User modelResult = layer.login(email, password);
 
             if (modelResult == null) {
-                status = "modelExpection";
-                statusCode = 500;
+                status = "invalidCredentials";
+                statusCode = 400;
             } else {
                 if (modelResult.getId() == null) {
                     status = "userNotFound";
-                    statusCode = 417;
+                    statusCode = 404;
                 } else {
                     JSONObject result = new JSONObject();
                     result.put("id", modelResult.getId());
@@ -95,6 +96,7 @@ public class UserService {
         return toReturn;
 
     }
+    
     public JSONObject registerUser(User u) {
         JSONObject toReturn = new JSONObject();
         String status = "success";
@@ -104,8 +106,8 @@ public class UserService {
             if (isValidPassword(u.getPassword())) {
                 boolean userIsExists = User.isUserExists(u.getEmail());
                 if (User.isUserExists(u.getEmail()) == null) {
-                    status = "ModelException";
-                    statusCode = 500;
+                    status = "invalidCredentials";
+                    statusCode = 400;
                 } else if (userIsExists == true) {
                     status = "UserAlreadyExists";
                     statusCode = 417;
@@ -139,8 +141,8 @@ public class UserService {
                 if (isValidPassword(u.getPassword())) {
                     boolean userIsExists = User.isUserExists(u.getEmail());
                     if (User.isUserExists(u.getEmail()) == null) {
-                        status = "ModelException";
-                        statusCode = 500;
+                        status = "invalidCredentials";
+                        statusCode = 400;
                     } else if (userIsExists == true) {
                         status = "UserAlreadyExists";
                         statusCode = 417;
@@ -197,8 +199,8 @@ public class UserService {
         int statusCode = 200;
         List<User> modelResult = layer.getAllUser();
         if (modelResult == null) {
-            status = "Modelexception";
-            statusCode = 500;
+            status = "invalidCredentials";
+            statusCode = 400;
         } else if (modelResult.isEmpty()) {
             status = "NoUsersFound";
             statusCode = 417;

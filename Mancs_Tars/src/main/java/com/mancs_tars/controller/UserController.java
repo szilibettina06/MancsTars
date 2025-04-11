@@ -4,7 +4,6 @@
  */
 package com.mancs_tars.controller;
 
-
 import com.mancs_tars.config.JWT;
 import com.mancs_tars.model.User;
 import com.mancs_tars.service.ShelterService;
@@ -43,7 +42,9 @@ public class UserController {
     }
 
     /**
-     * Retrieves representation of an instance of com.mancs_tars.controller.UserController
+     * Retrieves representation of an instance of
+     * com.mancs_tars.controller.UserController
+     *
      * @return an instance of java.lang.String
      */
     @GET
@@ -55,13 +56,15 @@ public class UserController {
 
     /**
      * PUT method for updating or creating an instance of UserController
+     *
      * @param content representation for the resource
      */
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
     public void putXml(String content) {
     }
-     @POST
+
+    @POST
     @Path("login")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response login(String bodyString) {
@@ -70,6 +73,7 @@ public class UserController {
         JSONObject obj = layer.login(body.getString("email"), body.getString("password"));
         return Response.status(obj.getInt("statusCode")).entity(obj.toString()).type(MediaType.APPLICATION_JSON).build();
     }
+   
     @POST
     @Path("registerUser")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -106,10 +110,10 @@ public class UserController {
         return Response.status(obj.getInt("statusCode")).entity(obj.toString()).type(MediaType.APPLICATION_JSON).build();
     }
 
-   @GET
-    @Path("getAllUsers")
+    @GET
+    @Path("getAllUser")
     @Produces(MediaType.APPLICATION_JSON)
-       public Response registerAdmin(@HeaderParam("token") String jwt) {
+    public Response registerAdmin(@HeaderParam("token") String jwt) {
         int isValid = JWT.validateJWT(jwt);
 
         if (isValid == 1) {
@@ -121,7 +125,7 @@ public class UserController {
             return Response.status(400).entity("TokenExpired").type(MediaType.APPLICATION_JSON).build();
         }
     }
-   /* public Response getAllUsers() {
+    /* public Response getAllUsers() {
         JSONObject toReturn = new JSONObject();
         String status = "success";
         int statusCode =  200;
@@ -169,5 +173,5 @@ public class UserController {
       
         
     }
-    */
+     */
 }

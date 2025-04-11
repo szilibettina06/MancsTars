@@ -411,9 +411,6 @@ public class User implements Serializable {
                         Boolean.parseBoolean(record[6].toString()),
                         Boolean.parseBoolean(record[7].toString()),
                         formatter.parse(record[8].toString()),
-                        record[6] == null ? null : formatter.parse(record[6].toString()),
-                        record[7] == null ? null : formatter.parse(record[7].toString()),
-                        record[8] == null ? null : formatter.parse(record[8].toString()),
                         record[9] == null ? null : formatter.parse(record[9].toString())
 
                 );
