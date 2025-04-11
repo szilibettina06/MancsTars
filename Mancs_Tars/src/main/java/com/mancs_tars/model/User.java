@@ -7,6 +7,7 @@ package com.mancs_tars.model;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -103,11 +104,31 @@ public class User implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedAt;
 
+    static EntityManagerFactory emf= Persistence.createEntityManagerFactory("com_Mancs_Tars_war_1.0-SNAPPU");
     public User() {
     }
 
     public User(Integer id) {
-        this.id = id;
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            User u = em.find(User.class, id);
+
+            this.id = u.getId();
+            this.email = u.getEmail();
+            this.phoneNumber = u.getPhoneNumber();
+            this.firstName = u.getFirstName();
+            this.lastName = u.getLastName();
+            this.password = u.getPassword();
+            this.isAdmin = u.getIsAdmin();
+            this.isDeleted = u.getIsDeleted();
+            this.createdAt = u.getCreatedAt();
+        } catch (Exception ex) {
+            System.err.println("Hiba: " + ex.getLocalizedMessage());
+        } finally {
+            em.clear();
+            em.close();
+        }
     }
 
     public User(Integer id, String firstName, String lastName, int age, String email, String password, String phoneNumber, boolean isAdmin, boolean isDeleted, Date createdAt, Date deletedAt) {
@@ -123,72 +144,97 @@ public class User implements Serializable {
         this.createdAt = createdAt;
         this.deletedAt = deletedAt;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-
-    public boolean getIsAdmin() {
-        return isAdmin;
-    }
-    
-
-    public boolean getIsDeleted() {
-        return isDeleted;
-    }
-    
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+    public User(String email, String phoneNumber, String firstName, String lastName, String password) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
+        this.phoneNumber = phoneNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    private User(Integer valueOf, String toString, String toString0, String toString1, String toString2, String toString3, boolean parseBoolean, boolean parseBoolean0, Date parse, Date date, Date date0, Date date1, Date date2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    private User(Integer valueOf, String toString, String toString0, String toString1, String toString2, String toString3, boolean parseBoolean, boolean parseBoolean0, Date parse, Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+
+   
+    //----------------------------------------------------
+    //setterek
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+     public void setIsDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+      public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+     public void setDeletedAt(Date deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+    //----------------------------------------------------
+    //getterek
+     public Integer getId() {
+        return id;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public int getAge() {
+        return age;
+    }
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+      public Date getDeletedAt() {
+        return deletedAt;
+    }
+//------------------------------------------------------
+    
 
     @Override
     public int hashCode() {
@@ -216,9 +262,173 @@ public class User implements Serializable {
     }
 
     public User login(String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            StoredProcedureQuery spq = em.createStoredProcedureQuery("login");
+            
+            spq.registerStoredProcedureParameter("emailIN", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("passwordIN", String.class, ParameterMode.IN);
+            
+            spq.setParameter("emailIN", email);
+            spq.setParameter("passwordIN", password);
+            
+            spq.execute();
+            
+            List<Object[]> resultList = spq.getResultList();
+            User toReturn = new User();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            for(Object[] o : resultList){
+                User u = new User(
+                        Integer.valueOf(o[0].toString()),
+                        o[1].toString(),
+                        o[2].toString(),
+                        o[3].toString(),
+                        o[4].toString(),
+                        o[5].toString(),
+                        Boolean.parseBoolean(o[6].toString()),
+                        Boolean.parseBoolean(o[7].toString()),
+                        formatter.parse(o[8].toString()),
+                        o[9] == null ? null : formatter.parse(o[9].toString())
+                );
+                toReturn = u;
+            }
+            
+            return toReturn;
+            
+        } catch (NumberFormatException | ParseException e) {
+            System.err.println("Hiba: " + e.getLocalizedMessage());
+            return null;
+        } finally {
+            em.clear();
+            em.close();
+        }
+    }
+        public Boolean registerUser(User u) {
+        EntityManager em = emf.createEntityManager();
+        
+        try {
+            StoredProcedureQuery spq = em.createStoredProcedureQuery("registerUser");
+            
+            spq.registerStoredProcedureParameter("emailIn", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("phoneNumberIn", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("firstNameIn", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("lastNameIn", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("passwordIn", String.class, ParameterMode.IN);
+            
+            spq.setParameter("emailIn", u.getEmail());
+            spq.setParameter("phoneNumberIn", u.getPhoneNumber());
+            spq.setParameter("firstNameIn", u.getFirstName());
+            spq.setParameter("lastNameIn", u.getLastName());
+            spq.setParameter("passwordIn", u.getPassword());
+            
+            spq.execute();
+            
+            return true;
+        } catch (Exception e) {
+            System.err.println("Hiba: " + e.getLocalizedMessage());
+            return false;
+        } finally {
+            em.clear();
+            em.close();
+        }
     }
     
+    public static Boolean isUserExists(String email){
+        EntityManager em = emf.createEntityManager();
+        
+        try {
+            StoredProcedureQuery spq = em.createStoredProcedureQuery("isUserExists");
+            
+            spq.registerStoredProcedureParameter("emailIn", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("resultOut", Boolean.class, ParameterMode.OUT);
+            
+            spq.setParameter("emailIn", email);
+            
+            spq.execute();
+            
+            Boolean result = Boolean.valueOf(spq.getOutputParameterValue("resultOut").toString());
+            
+            return result;
+        } catch (Exception e) {
+            System.err.println("Hiba: " + e.getLocalizedMessage());
+            return null;
+        } finally {
+            em.clear();
+            em.close();
+        }
+    }
+    
+    public Boolean registerAdmin(User u) {
+        EntityManager em = emf.createEntityManager();
+        
+        try {
+            StoredProcedureQuery spq = em.createStoredProcedureQuery("registerAdmin");
+            
+            spq.registerStoredProcedureParameter("emailIn", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("phoneNumberIn", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("firstNameIn", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("lastNameIn", String.class, ParameterMode.IN);
+            spq.registerStoredProcedureParameter("passwordIn", String.class, ParameterMode.IN);
+            
+            spq.setParameter("emailIn", u.getEmail());
+            spq.setParameter("phoneNumberIn", u.getPhoneNumber());
+            spq.setParameter("firstNameIn", u.getFirstName());
+            spq.setParameter("lastNameIn", u.getLastName());
+            spq.setParameter("passwordIn", u.getPassword());
+            
+            spq.execute();
+            
+            return true;
+        } catch (Exception e) {
+            System.err.println("Hiba: " + e.getLocalizedMessage());
+            return false;
+        } finally {
+            em.clear();
+            em.close();
+        }
+    }
+    public static List<User> getAllUser() {
+        EntityManager em = emf.createEntityManager();
+        List<User> userList = null;
+        
+        try {
+            StoredProcedureQuery spq = em.createStoredProcedureQuery("getAllUser");
+            spq.execute();
+            
+            List<User>toReturn=new ArrayList();
+            List<Object[]>resultList =spq.getResultList();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            for(Object[] record : resultList){
+                User u =new User(
+                         Integer.valueOf(record[0].toString()),
+                        record[1].toString(),
+                        record[2].toString(),
+                        record[3].toString(),
+                        record[4].toString(),
+                        record[5].toString(),
+                        Boolean.parseBoolean(record[6].toString()),
+                        Boolean.parseBoolean(record[7].toString()),
+                        formatter.parse(record[8].toString()),
+                        record[6] == null ? null : formatter.parse(record[6].toString()),
+                        record[7] == null ? null : formatter.parse(record[7].toString()),
+                        record[8] == null ? null : formatter.parse(record[8].toString()),
+                        record[9] == null ? null : formatter.parse(record[9].toString())
+
+                );
+                toReturn.add(u);
+            }
+            
+            return toReturn;
+        } catch (Exception e) {
+            System.err.println("Hiba: " + e.getLocalizedMessage());
+            return null;
+        } finally {
+            em.clear();
+            em.close();
+        }
+    }
 
     
 }
