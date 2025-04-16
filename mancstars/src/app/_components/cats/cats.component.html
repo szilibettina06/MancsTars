@@ -1,444 +1,96 @@
 <app-navbar></app-navbar>
 <div class="container-fluid" id="catContainer">
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let cat of cats">
       <div class="card">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Sphinx2_July_2006.jpg/1200px-Sphinx2_July_2006.jpg"
-          class="card-img-top"
-          alt="..."
-        />
+        <img [src]="cat.catImg" class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">Szultán</h5>
-          <p class="card-text">I like to bath in the sun for a long time</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://hobbiallat.hu/wp-content/uploads/2018/10/bombaymacska-1.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Cirmi</h5>
+          <h5 class="card-title">{{ cat.name }}</h5>
           <p class="card-text">
-            I'm a smart little kitten, who like to play hunt
+            Age: {{cat.age}} <br>
+            Gender: {{cat.gender}} <br>
+            Breed: {{cat.breed}}
+
           </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.zooplus.hu/magazin/wp-content/uploads/2018/10/Maine-Coon-768x658.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Gombóc</h5>
-          <p class="card-text">
-            I love all the yarnballs, so keep them safe from me. Also, I love
-            nap times
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.pet4you.hu/img/big/Perzsa_1200x1200px.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Picúr</h5>
-          <p class="card-text">I love to hide in blankets and cosy places</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/6/60/Neighbours_Siamese.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Szultán</h5>
-          <p class="card-text">I like to bath in the sun for a long time</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/9/97/Female_bengal_cat_outdoor.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Cirmi</h5>
-          <p class="card-text">
-            I'm a smart little kitten, who like to play hunt
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.zooplus.hu/magazin/wp-content/uploads/2017/03/britisch-kurzhaar-gelb-augen.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Gombóc</h5>
-          <p class="card-text">
-            I love all the yarnballs, so keep them safe from me. Also, I love
-            nap times
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Flame_point_Ragdoll.jpg/800px-Flame_point_Ragdoll.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Picúr</h5>
-          <p class="card-text">I love to hide in blankets and cosy places</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.purina.co.uk/sites/default/files/2021-02/CAT%20HERO_0021_Scottish_fold.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Szultán</h5>
-          <p class="card-text">I like to bath in the sun for a long time</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.zooplus.hu/magazin/wp-content/uploads/2024/02/singapura-kitten-1024x682-1.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Cirmi</h5>
-          <p class="card-text">
-            I'm a smart little kitten, who like to play hunt
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://catmania.hu/wp-content/uploads/2023/10/laperm-macska3.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Gombóc</h5>
-          <p class="card-text">
-            I love all the yarnballs, so keep them safe from me. Also, I love
-            nap times
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://macskafajtak.hu/kepek/rovidszoru-amerikai-csonkafarku-macska/rovidszoru-amerikai-csonkafarku-macska-04.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Picúr</h5>
-          <p class="card-text">I love to hide in blankets and cosy places</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.azenmacskam.hu/wp-content/uploads/2022/04/amerikai-drotszoru.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Szultán</h5>
-          <p class="card-text">I like to bath in the sun for a long time</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.azenmacskam.hu/wp-content/uploads/2022/04/gettyimages-1083243006-360x240.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Cirmi</h5>
-          <p class="card-text">
-            I'm a smart little kitten, who like to play hunt
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://cdn-images.vetstreet.com/06/97c900a34011e087a80050568d634f/file/Pixie-Bob-4-645mk062311.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Gombóc</h5>
-          <p class="card-text">
-            I love all the yarnballs, so keep them safe from me. Also, I love
-            nap times
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://icatcare.org/app/uploads/2018/10/singapura-1.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Picúr</h5>
-          <p class="card-text">I love to hide in blankets and cosy places</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.zooplus.hu/magazin/wp-content/uploads/2021/11/Selkirk-Rex-katze-768x512-1.jpeg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Szultán</h5>
-          <p class="card-text">I like to bath in the sun for a long time</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.azenmacskam.hu/wp-content/uploads/2023/01/gettyimages-1230422049.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Cirmi</h5>
-          <p class="card-text">
-            I'm a smart little kitten, who like to play hunt
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.cdc.gov/healthy-pets/media/images/2024/04/Cat-on-couch.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Gombóc</h5>
-          <p class="card-text">
-            I love all the yarnballs, so keep them safe from me. Also, I love
-            nap times
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScxCAcu9Yhyq66sKvoQLGM-BBuO47UoXxEHw&s"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Picúr</h5>
-          <p class="card-text">I love to hide in blankets and cosy places</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.zooplus.hu/magazin/wp-content/uploads/2023/02/AdobeStock_351639199-768x512-1.jpeg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Szultán</h5>
-          <p class="card-text">I like to bath in the sun for a long time</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://macskafajtak.hu/kepek/szomali-macska/szomali-macska-02.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Cirmi</h5>
-          <p class="card-text">
-            I'm a smart little kitten, who like to play hunt
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.azenmacskam.hu/wp-content/uploads/2022/10/gettyimages-1253996764-360x540.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Gombóc</h5>
-          <p class="card-text">
-            I love all the yarnballs, so keep them safe from me. Also, I love
-            nap times
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScxCAcu9Yhyq66sKvoQLGM-BBuO47UoXxEHw&s"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Picúr</h5>
-          <p class="card-text">I love to hide in blankets and cosy places</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.zooplus.hu/magazin/wp-content/uploads/2020/03/Balin%C3%A9z-macska.jpeg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Szultán</h5>
-          <p class="card-text">I like to bath in the sun for a long time</p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://www.zooplus.hu/magazin/wp-content/uploads/2017/06/fotolia_138223631-768x512.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Cirmi</h5>
-          <p class="card-text">
-            I'm a smart little kitten, who like to play hunt
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://macskafajtak.hu/kepek/tonkinez-macska/tonkinez-macska-01.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Gombóc</h5>
-          <p class="card-text">
-            I love all the yarnballs, so keep them safe from me. Also, I love
-            nap times
-          </p>
-          <a href="#" class="showBtn">Show more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/3/3c/IC_Blue_Melody_Flipper_CHA_male_EX1_CACIB.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Picúr</h5>
-          <p class="card-text">I love to hide in blankets and cosy places</p>
-          <a href="#" class="showBtn">Show more</a>
+          <button class="showBtn" (click)="openPopup(cat)">Show more</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="overlay" *ngIf="selectedCats" (click)="closePopup()">
+  <div class="popup" (click)="$event.stopPropagation()">
+     
+    <div>
+      <img
+        class="popup-img"
+        [src]="selectedCats.catImg"
+        alt="{{ selectedCats.catImg }}"
+      />
+    </div>
+    <br>
+    <div class="content">
+      <h2>{{ selectedCats?.name }}</h2>
+      <p>
+        Tendency to Escape:
+        <span *ngIf="selectedCats?.tendencyToEscape !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.tendencyToEscape)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Health:
+        <span *ngIf="selectedCats?.health !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.health)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Intelligence:
+        <span *ngIf="selectedCats?.intelligence !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.intelligence)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Tendency to Gain weight:
+        <span *ngIf="selectedCats?.tendencyToGainWeight !== undefined">
+          <span
+            *ngFor="let star of getStars(selectedCats.tendencyToGainWeight)"
+          >
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Cat friendly:
+        <span *ngIf="selectedCats?.dogFriendly !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.dogFriendly)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Energy level:
+        <span *ngIf="selectedCats?.energyLevel !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.energyLevel)">
+            {{ star }}
+          </span>
+        </span>
+     <br>
+        Apartment friendly:
+        <span *ngIf="selectedCats?.apartmentFriendly !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.apartmentFriendly)">
+            {{ star }}
+          </span>
+        </span>
+      <br>
+        Kids friendly:
+        <span *ngIf="selectedCats?.kidsFriendly !== undefined">
+          <span *ngFor="let star of getStars(selectedCats.kidsFriendly)">
+            {{ star }}
+          </span>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+

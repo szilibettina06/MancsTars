@@ -27,12 +27,15 @@
 .left{
     display: flex;
     flex-direction: row;
+    
 }
+
 .details-img{
     height: 200px;
     width: 200px;
     border: 2px solid #2B201B;
     border-radius: 20px;
+    margin: 20px;
 }
 .right {
     display: flex;

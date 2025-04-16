@@ -1,65 +1,62 @@
 <div class="login-container">
   <div class="login-card">
     <div class="login-header">
-      <h1>Login</h1>
+      <h1>Welcome Back</h1>
+      <p>Please log in to continue</p>
     </div>
-    <form id="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      @if(errorMessage){
-      <div class="error-message">
-        <i class="fas fa-exclamation-circle"></i>
-        {{ errorMessage }}
-      </div>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off" novalidate>
+      @if (errorMessage) {
+        <div class="error-message">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ errorMessage }}
+        </div>
       }
       <div class="form-group">
-        <label for="username"> Username </label>
-        <input
-          type="text"
-          id="username"
-          formControlName="username"
-          placeholder="Ird be a felhasználóneved"
-          [class.invalid]="
-            loginForm.get('username')?.invalid &&
-            loginForm.get('username')?.touched
-          "
-        />
-        @if(loginForm.get('username')?.invalid &&
-        loginForm.get('username')?.touched){
-        <span class="error">Username is required.</span>
+        <label for="username">
+          <i class="fas fa-user"></i>
+          Username
+        </label>
+        <input 
+          type="text" 
+          id="username" 
+          formControlName="username" 
+          placeholder="Enter your username"
+          [class.invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+          autocomplete="new-username"
+        >
+        @if (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
+          <span class="error-hint">Username is required</span>
         }
       </div>
-      
-      <div class="form-group">
-        <label for="password"> Password </label>
-        <input
-          [type]="showPassword ? 'text' : 'password'"
-          id="password"
-          formControlName="password"
-          placeholder="Ird be a jelszavad"
-          [class.invalid]="
-            loginForm.get('password')?.invalid &&
-            loginForm.get('password')?.touched
-          "
-        />
-        <button
-          type="button"
-          class="toggle-password"
-          (click)="togglePassword()"
-        >
-          <i id="eye" [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
-        </button>
-      </div>
-      @if(loginForm.get('password')?.invalid &&
-      loginForm.get('password')?.touched){
-      <span class="error"> Password is required.</span>
-      }
 
-      <div>
+      <div class="form-group">
+        <label for="password">
+          <i class="fas fa-lock"></i>
+          Password
+        </label>
+        <div class="password-input">
+          <input 
+            [type]="showPassword ? 'text' : 'password'"
+            id="password" 
+            formControlName="password" 
+            placeholder="Enter your password"
+            [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+            autocomplete="new-password"
+          >
+          <button type="button" class="toggle-password" (click)="togglePassword()">
+            <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+          </button>
+        </div>
+        @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+          <span class="error-hint">Password is required</span>
+        }
         <button class="register-here" (click)="registerHere()">Don't have an account? Register one here!</button>
         <button class="forgot-password" (click)="forgotPassword()" >Forgot Password?</button>
-        
       </div>
-      <button class="loginBtn" type="button" (click)="onLogin()">login</button>
-    </form>
+        <button type="submit" class="login-button" [disabled]="loginForm.invalid">
+          Log In
+        </button>
+      </form>
+    </div>
   </div>
-</div>
-

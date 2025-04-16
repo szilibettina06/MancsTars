@@ -26,4 +26,5 @@ export const routes: Routes = [
     { path: 'verify', component: VerifyComponent },
     { path: 'changepassword', component: ChangepasswordComponent },
     { path: 'successlogout', component: SucceslogoutComponent }
+    
 ];
