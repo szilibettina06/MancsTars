@@ -48,6 +48,26 @@
 #title{
     color: transparent;
 }
+/* Mobil alapértelmezett stílus */
+@media (max-width: 599px) {
+    #shelterCard {
+        width: 90%;
+    }
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 991px) {
+    #shelterCard {
+        width: 90%;
+    }
+}
+
+/* Asztali */
+@media (min-width: 992px) {
+    #shelterCard {
+        width: 90%;
+    }
+}
 .overlay {
     position: fixed;
     top: 0;
